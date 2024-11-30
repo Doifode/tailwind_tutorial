@@ -1,0 +1,58 @@
+.navbar{
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      padding: 15px 7px;
+      transition: 0.5s;
+}
+
+.logo{
+    width: 160px;
+    cursor: pointer;
+}
+
+ul{
+    flex: 1;
+    list-style: none;
+    text-align: center;
+}
+
+
+
+.toggleicon{
+    width: 50px;
+    cursor: pointer;
+    margin-left: 40px;
+}
+
+.dark .navbar{
+    background: #000;
+    color: #fff;
+   
+}
+
+.navop{
+    font-size: 20px;
+    margin: 10px 20px;
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none !important;
+    font-weight: bold;
+    color: #000;
+    
+}
+
+ul li{
+    font-size: 18px;
+    margin: 10px 20px;
+    display: inline-block;
+    cursor: pointer;
+   
+}
+.dark .navop{
+    background: #000;
+    color: #fff;
+   
+}
