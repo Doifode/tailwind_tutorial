@@ -36,6 +36,8 @@ const TreeDetails = () => {
           <h5 className="text-secondary">Species:</h5>
           <p className="fs-4">{tree.species}</p>
 
+          <h5 className="text-secondary">Description:</h5>
+          <p className="fs-4">{tree.description} years</p>
           <h5 className="text-secondary">Age:</h5>
           <p className="fs-4">{tree.age} years</p>
         </div>
