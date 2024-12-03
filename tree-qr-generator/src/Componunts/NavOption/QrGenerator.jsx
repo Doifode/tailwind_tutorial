@@ -14,10 +14,12 @@ const GenerateQR = () => {
       name: '',
       species: '',
       age: '',
+      description: ""
     },
     validationSchema: Yup.object({
       name: Yup.string().required('Name is required'),
       species: Yup.string().required('Species is required'),
+      description: Yup.string().required('description is required'),
       age: Yup.number()
         .required('Age is required')
         .positive('Age must be positive')
@@ -105,6 +107,23 @@ const GenerateQR = () => {
                   />
                   {formik.touched.age && formik.errors.age && (
                     <div className="invalid-feedback">{formik.errors.age}</div>
+                  )}
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="description" className="form-label">
+                    Description
+                  </label>
+                  <textarea
+                    type="text"
+                    id="description"
+                    name="description"
+                    className={`form-control ${formik.touched.description && formik.errors.description ? 'is-invalid' : ''
+                      }`}
+                    value={formik.values.description}
+                    onChange={formik.handleChange}
+                  />
+                  {formik.touched.description && formik.errors.description && (
+                    <div className="invalid-feedback">{formik.errors.description}</div>
                   )}
                 </div>
 
