@@ -29,9 +29,30 @@ const GenerateQR = () => {
     },
   });
 
+  const [imageError, setImageError] = useState(null);
+
   const handleImageUpload = (e) => {
     const file = e.target.files?.[0];
     if (file) {
+      const fileSizeLimit = 500 * 1024; // 500 KB in bytes
+      const validImageTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/jpg'];
+
+      // Check if the file is an image
+      if (!validImageTypes.includes(file.type)) {
+        setImageError('Only image files (JPG, PNG, GIF) are allowed.');
+        setImageBase64(null);
+        return;
+      }
+
+      // Check if the image size is less than 500KB
+      if (file.size > fileSizeLimit) {
+        setImageError('The image size must be less than 500KB.');
+        setImageBase64(null);
+        return;
+      }
+
+      // If file is valid, reset error and read the image
+      setImageError(null);
       const reader = new FileReader();
       reader.onloadend = () => {
         setImageBase64(reader.result);
@@ -39,6 +60,7 @@ const GenerateQR = () => {
       reader.readAsDataURL(file);
     }
   };
+
 
   const handleSubmit = async (values) => {
     const formData = {
@@ -145,7 +167,6 @@ const GenerateQR = () => {
                     <div className="invalid-feedback">{formik.errors.description}</div>
                   )}
                 </div>
-
                 <div className="mb-3">
                   <label className="form-label">Upload Image</label>
                   <input
@@ -153,7 +174,9 @@ const GenerateQR = () => {
                     className="form-control"
                     onChange={handleImageUpload}
                   />
+                  {imageError && <div className="text-danger mt-2">{imageError}</div>}
                 </div>
+
 
                 <button type="submit" className="btn btn-primary w-100">
                   Submit
