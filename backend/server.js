@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const path = require('path');
 const dotenv = require('dotenv');
 
 dotenv.config(); // Load environment variables
@@ -72,6 +73,13 @@ app.get('/api/trees/:id', async (req, res) => {
     }
 });
 
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// Catch-all route to serve the React app (for any route not starting with "/api")
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
 
 // Start the server
 app.listen(port, () => {
