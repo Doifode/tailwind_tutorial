@@ -3,12 +3,9 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "node backend/server.js",
     "client": "npm run dev --prefix tree-qr-generator",
-    "build": "npm run build-client && npm run build-server",
-    "build-client": "npm run build --prefix tree-qr-generator",
-    "build-server": "cp -r tree-qr-generator/build/* backend/dist/",
+    "build": "npm run build-server",
     "dev": "node backend/server.js"
   },
   "author": "",
