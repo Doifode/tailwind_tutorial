@@ -6,6 +6,7 @@
     "server": "node backend/server.js",
     "client": "npm run dev --prefix tree-qr-generator",
     "build": "npm run build-server",
+    "build-server": "cp -r tree-qr-generator/dist/* backend/dist/",
     "dev": "node backend/server.js"
   },
   "author": "",
