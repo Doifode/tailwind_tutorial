@@ -1,38 +1,31 @@
 import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { useNavigate } from 'react-router-dom';
 import { QRCodeSVG } from 'qrcode.react';
 
 const GenerateQR = () => {
   const [imageBase64, setImageBase64] = useState(null);
   const [qrCodeValue, setQrCodeValue] = useState(null);
-  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
       name: '',
       species: '',
       age: '',
-      description: ""
+      description: '',
     },
     validationSchema: Yup.object({
       name: Yup.string().required('Name is required'),
       species: Yup.string().required('Species is required'),
-      description: Yup.string().required('description is required'),
+      description: Yup.string().required('Description is required'),
       age: Yup.number()
         .required('Age is required')
         .positive('Age must be positive')
         .integer('Age must be an integer'),
     }),
     onSubmit: (values) => {
-      const id = Date.now().toString();
-      const treeData = { ...values, image: imageBase64 };
-      localStorage.setItem(id, JSON.stringify(treeData));
-
-      const link = `${window.location.origin}/tree/${id}`;
+      handleSubmit(values)
       setQrCodeValue(link);
-
     },
   });
 
@@ -46,6 +39,36 @@ const GenerateQR = () => {
       reader.readAsDataURL(file);
     }
   };
+
+  const handleSubmit = async (values) => {
+    const formData = {
+      name: values.name,
+      species: values.species,
+      age: values.age,
+      description: values.description,
+      image: imageBase64, // Base64 encoded image
+    };
+
+    try {
+      const response = await fetch('http://localhost:5000/api/trees', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+      if (data.tree) {
+        const link = `${window.location.origin}/tree/${data.tree._id}`;
+        setQrCodeValue(link);
+      } else {
+        alert('Failed to create tree');
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
 
   return (
     <div className="container mt-5">
@@ -64,8 +87,7 @@ const GenerateQR = () => {
                     type="text"
                     id="name"
                     name="name"
-                    className={`form-control ${formik.touched.name && formik.errors.name ? 'is-invalid' : ''
-                      }`}
+                    className={`form-control ${formik.touched.name && formik.errors.name ? 'is-invalid' : ''}`}
                     value={formik.values.name}
                     onChange={formik.handleChange}
                   />
@@ -82,8 +104,7 @@ const GenerateQR = () => {
                     type="text"
                     id="species"
                     name="species"
-                    className={`form-control ${formik.touched.species && formik.errors.species ? 'is-invalid' : ''
-                      }`}
+                    className={`form-control ${formik.touched.species && formik.errors.species ? 'is-invalid' : ''}`}
                     value={formik.values.species}
                     onChange={formik.handleChange}
                   />
@@ -100,8 +121,7 @@ const GenerateQR = () => {
                     type="number"
                     id="age"
                     name="age"
-                    className={`form-control ${formik.touched.age && formik.errors.age ? 'is-invalid' : ''
-                      }`}
+                    className={`form-control ${formik.touched.age && formik.errors.age ? 'is-invalid' : ''}`}
                     value={formik.values.age}
                     onChange={formik.handleChange}
                   />
@@ -109,16 +129,15 @@ const GenerateQR = () => {
                     <div className="invalid-feedback">{formik.errors.age}</div>
                   )}
                 </div>
+
                 <div className="mb-3">
                   <label htmlFor="description" className="form-label">
                     Description
                   </label>
                   <textarea
-                    type="text"
                     id="description"
                     name="description"
-                    className={`form-control ${formik.touched.description && formik.errors.description ? 'is-invalid' : ''
-                      }`}
+                    className={`form-control ${formik.touched.description && formik.errors.description ? 'is-invalid' : ''}`}
                     value={formik.values.description}
                     onChange={formik.handleChange}
                   />
@@ -145,7 +164,7 @@ const GenerateQR = () => {
         </div>
 
         {/* Image Preview and QR Code Section */}
-        <div className="col-md-6">
+        <div className="col-md-6 d-flex flex-column align-items-center">
           {imageBase64 && (
             <div className="mb-4 text-center">
               <img
