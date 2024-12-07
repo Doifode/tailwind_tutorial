@@ -12,7 +12,7 @@ const TreeDetails = () => {
     // Fetch tree data from the backend
     const fetchTreeData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/trees/${id}`);
+        const response = await fetch(`https://tailwind-tutorial-9c5r.onrender.com/api/trees/${id}`);
         if (!response.ok) {
           throw new Error('Tree not found!');
         }

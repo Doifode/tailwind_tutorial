@@ -3,10 +3,10 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "server": "node backend/server.js",
+    "server": "node server.js",
     "client": "npm run dev --prefix tree-qr-generator",
     "build": "npm install && npm install --prefix tree-qr-generator && npm run build --prefix tree-qr-generator",
-     "dev": "node backend/server.js"
+    "dev": "node backend/server.js"
   },
   "author": "",
   "license": "ISC",
