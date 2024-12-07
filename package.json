@@ -5,9 +5,8 @@
   "scripts": {
     "server": "node backend/server.js",
     "client": "npm run dev --prefix tree-qr-generator",
-    "build": "npm run build-server",
-    "build-server": "cp -r tree-qr-generator/dist/* backend/dist/",
-    "dev": "node backend/server.js"
+    "build": "npm install && npm install --prefix tree-qr-generator && npm run build --prefix tree-qr-generator",
+     "dev": "node backend/server.js"
   },
   "author": "",
   "license": "ISC",

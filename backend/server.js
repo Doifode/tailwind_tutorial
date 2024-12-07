@@ -74,11 +74,11 @@ app.get('/api/trees/:id', async (req, res) => {
 });
 
 // Serve static files from the React app
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, '/tree-qr-generator/dist')));
 
 // Catch-all route to serve the React app (for any route not starting with "/api")
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+    res.sendFile(path.join(__dirname, 'tree-qr-generator', 'dist','index.html'));
 });
 
 // Start the server
