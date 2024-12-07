@@ -50,7 +50,7 @@ const GenerateQR = () => {
     };
 
     try {
-      const response = await fetch('https://tailwind-tutorial-9c5r.onrender.com//api/trees', {
+      const response = await fetch('https://tailwind-tutorial-9c5r.onrender.com/api/trees', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
