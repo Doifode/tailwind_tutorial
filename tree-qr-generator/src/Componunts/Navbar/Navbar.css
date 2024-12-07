@@ -56,25 +56,25 @@
   /* Responsive logo size */
   @media (max-width: 1200px) {
     .logo {
-      width: 140px; /* Slightly smaller logo for medium screens */
+      width: 140px !important; /* Slightly smaller logo for medium screens */
     }
   }
   
   @media (max-width: 992px) {
     .logo {
-      width: 120px; /* Smaller logo for smaller screens */
+      width: 120px !important; /* Smaller logo for smaller screens */
     }
   }
   
   @media (max-width: 768px) {
     .logo {
-      width: 100px; /* Even smaller logo for tablets and phones */
+      width: 100px !important; /* Even smaller logo for tablets and phones */
     }
   }
   
   @media (max-width: 576px) {
     .logo {
-      width: 80px; /* Smallest logo for mobile devices */
+      width: 80px !important; /* Smallest logo for mobile devices */
     }
   }
   

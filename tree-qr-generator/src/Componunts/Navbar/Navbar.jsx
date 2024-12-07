@@ -26,7 +26,7 @@ const Navbar = ({ theme, setTheme }) => {
         <img
           src={theme === 'light' ? logo_light : logo_dark}
           alt="logo"
-          className="navbar-brand"
+          className="navbar-brand logo"
         />
 
         <button
