@@ -44,10 +44,10 @@ const Navbar = ({ theme, setTheme }) => {
 
         <div className={`collapse navbar-collapse ${isOpen ? 'show' : ''}`} id="navbarNav">
           <ul className="navbar-nav ms-auto">
-            <CustomLink to="/" onClick={toggleNavbar}>Home</CustomLink>
-            <CustomLink to="/QrGenerator" onClick={toggleNavbar}>QrGenerator</CustomLink>
-            <CustomLink to="/Feedback" onClick={toggleNavbar}>Feedback</CustomLink>
-            <CustomLink to="/About" onClick={toggleNavbar}>About</CustomLink>
+            <CustomLink to="/" className="navop" onClick={toggleNavbar}>Home</CustomLink>
+            <CustomLink to="/QrGenerator" className="navop" onClick={toggleNavbar}>QrGenerator</CustomLink>
+            <CustomLink to="/Feedback" className="navop" onClick={toggleNavbar}>Feedback</CustomLink>
+            <CustomLink to="/About" className="navop" onClick={toggleNavbar}>About</CustomLink>
           </ul>
         </div>
 

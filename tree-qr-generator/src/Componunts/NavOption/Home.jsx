@@ -30,7 +30,7 @@ const Home = () => {
           we will delve into the importance of plants and trees, their various types, and how we can contribute to their preservation.
           <br /><br />
           <b>The Role of Plants in Our Ecosystem</b>
-          <br /><br />
+          <br />
           Plants are the foundation of most ecosystems. They perform vital functions that benefit all life.
           <br /><br />
           <b>Photosynthesis:</b>
@@ -39,7 +39,7 @@ const Home = () => {
           <br />Plants are at the base of the food chain. They provide food for herbivores, which in turn support carnivores. Fruits, vegetables, grains, and nuts are essential dietary components for humans and many animals.
         </p>
 
-        <h1 className="vediotxt2 text-center text-light my-5">
+        <h1 className="vediotxt2 text-center  my-5" id='vitxt'>
           Embracing Nature: The Vital Connection <br /> Between Plants, Trees, and Humanity
         </h1>
 
@@ -50,8 +50,8 @@ const Home = () => {
           <b>The Multifaceted Benefits of Plants and Trees</b><br />
           Plants and trees offer a wide range of benefits that extend far beyond their aesthetic appeal.
           Here are some key contributions they make to our lives:
-          <br /><br />
-          <b>Health Benefits:</b><br />
+          <br />
+          
           <b>Physical Health:</b><br /> Access to green spaces encourages physical activity, which is essential for maintaining a healthy lifestyle. Studies have shown that spending time in nature can reduce the risk of chronic diseases.
           <br /><b>Mental Well-Being:</b><br /> Nature has a profound impact on mental health. Exposure to green environments can reduce stress, anxiety, and depression while enhancing mood and cognitive function.
         </p>

@@ -1,15 +1,17 @@
-.navbar{
+.navbar-nav{
     width: 100%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    background: #fff;
+    justify-content:space-around;
+    background: #ffffff;
     padding: 15px 7px;
     transition: 0.5s;
+    color: #000000;
   }
   
   .logo{
-    width: 160px;
+    width: 192px;
+    height: 131px;
     cursor: pointer;
     transition: width 0.3s ease; /* Optional: adds smooth resizing */
   }
@@ -26,9 +28,9 @@
     margin-left: 40px;
   }
   
-  .dark .navbar{
-    background: #000;
-    color: #fff;
+  .dark .navbar-nav{
+    background-color: #333333;
+    
   }
   
   .navop{
@@ -38,7 +40,7 @@
     cursor: pointer;
     text-decoration: none !important;
     font-weight: bold;
-    color: #000;
+    color: #000000;
   }
   
   ul li{
@@ -49,32 +51,38 @@
   }
   
   .dark .navop{
-    background: #000;
+   
     color: #fff;
   }
+
+ 
   
   /* Responsive logo size */
   @media (max-width: 1200px) {
     .logo {
       width: 140px !important; /* Slightly smaller logo for medium screens */
+      height: auto;
     }
   }
   
   @media (max-width: 992px) {
     .logo {
       width: 120px !important; /* Smaller logo for smaller screens */
+      height: auto;
     }
   }
   
   @media (max-width: 768px) {
     .logo {
       width: 100px !important; /* Even smaller logo for tablets and phones */
+      height: auto;
     }
   }
   
   @media (max-width: 576px) {
     .logo {
       width: 80px !important; /* Smallest logo for mobile devices */
+      height: auto;
     }
   }
   
