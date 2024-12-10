@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import './TreeDe.css'
 
 const TreeDetails = () => {
   const { id } = useParams();
@@ -68,22 +69,22 @@ const TreeDetails = () => {
           <hr />
 
           <div className="mb-3">
-            <h5 className="text-secondary">Name:</h5>
+            <h5 className="fw-bolder">Name:</h5>
             <p className="fs-5">{tree?.name}</p>
           </div>
 
           <div className="mb-3">
-            <h5 className="text-secondary">Species:</h5>
+            <h5 className="fw-bolder">Species:</h5>
             <p className="fs-5">{tree?.species}</p>
           </div>
 
           <div className="mb-3">
-            <h5 className="text-secondary">Description:</h5>
+            <h5 className="fw-bolder">Description:</h5>
             <p className="fs-5">{tree?.description}</p>
           </div>
 
           <div className="mb-3">
-            <h5 className="text-secondary">Age:</h5>
+            <h5 className="fw-bolder">Age:</h5>
             <p className="fs-5">{tree?.age} years</p>
           </div>
         </div>

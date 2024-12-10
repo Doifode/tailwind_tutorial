@@ -6,12 +6,13 @@
 }
 
 .container__ {
-    background: #ced8ff;
+    background: #ffffff;
+    color: #000000;
 }
 
 .container__.dark {
     background: #222;
-    color: white !important;
+    color: rgb(255, 255, 255);
 }
 
 .container2 {
@@ -33,4 +34,29 @@ body {
     background-color: #bde5d2;
     font-family: 'Poppins', sans-serif;
 
+}
+
+.display-3{
+    color: black;
+}
+.dark .display-3{
+    color: #ffffff;
+}
+
+.lead{
+    color: black;
+}
+.dark .lead{
+    color: #ffffff;
+}
+
+#vitxt  {
+    color: black;
+}
+.dark #vitxt{
+    color: #ffffff;
+}
+
+#aboutch{
+    font-size: 1.4rem !important;
 }
