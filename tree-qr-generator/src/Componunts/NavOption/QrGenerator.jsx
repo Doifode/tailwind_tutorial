@@ -6,6 +6,7 @@ import { QRCodeSVG } from 'qrcode.react';
 const GenerateQR = () => {
   const [imageBase64, setImageBase64] = useState(null);
   const [qrCodeValue, setQrCodeValue] = useState(null);
+  const [imageError, setImageError] = useState(null);
 
   const formik = useFormik({
     initialValues: {
@@ -24,12 +25,10 @@ const GenerateQR = () => {
         .integer('Age must be an integer'),
     }),
     onSubmit: (values) => {
-      handleSubmit(values)
+      handleSubmit(values);
       setQrCodeValue(link);
     },
   });
-
-  const [imageError, setImageError] = useState(null);
 
   const handleImageUpload = (e) => {
     const file = e.target.files?.[0];
@@ -53,14 +52,51 @@ const GenerateQR = () => {
 
       // If file is valid, reset error and read the image
       setImageError(null);
+      
+      // Compress image using canvas
       const reader = new FileReader();
       reader.onloadend = () => {
-        setImageBase64(reader.result);
+        const img = new Image();
+        img.src = reader.result;
+
+        img.onload = () => {
+          // Create a canvas to resize the image
+          const canvas = document.createElement('canvas');
+          const ctx = canvas.getContext('2d');
+          
+          const MAX_WIDTH = 600; // Max width for the image
+          const MAX_HEIGHT = 600; // Max height for the image
+
+          let width = img.width;
+          let height = img.height;
+
+          // Calculate the new dimensions
+          if (width > height) {
+            if (width > MAX_WIDTH) {
+              height = Math.round((height * MAX_WIDTH) / width);
+              width = MAX_WIDTH;
+            }
+          } else {
+            if (height > MAX_HEIGHT) {
+              width = Math.round((width * MAX_HEIGHT) / height);
+              height = MAX_HEIGHT;
+            }
+          }
+
+          // Resize the image to fit within the max dimensions
+          canvas.width = width;
+          canvas.height = height;
+          ctx.drawImage(img, 0, 0, width, height);
+
+          // Convert the image to a Base64 string
+          const compressedBase64 = canvas.toDataURL(file.type, 0.7); // 0.7 is the quality (0-1)
+
+          setImageBase64(compressedBase64);
+        };
       };
       reader.readAsDataURL(file);
     }
   };
-
 
   const handleSubmit = async (values) => {
     const formData = {
@@ -90,7 +126,6 @@ const GenerateQR = () => {
       console.error(error);
     }
   };
-
 
   return (
     <div className="container mt-5">
@@ -176,7 +211,6 @@ const GenerateQR = () => {
                   />
                   {imageError && <div className="text-danger mt-2">{imageError}</div>}
                 </div>
-
 
                 <button type="submit" className="btn btn-primary w-100">
                   Submit
