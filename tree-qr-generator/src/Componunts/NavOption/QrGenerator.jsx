@@ -117,7 +117,7 @@ const GenerateQR = () => {
       });
       const data = await response.json();
       if (data.tree) {
-        const link = `${window.location.origin}/tree/${data.tree._id}`;
+        const link = `https://tailwind-tutorial-9c5r.onrender.com/tree/${data.tree._id}`;
         setQrCodeValue(link);
       } else {
         alert('Failed to create tree');
